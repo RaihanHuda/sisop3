@@ -2,7 +2,7 @@
 |    NRP     |      Name      |
 | :--------: | :------------: |
 | 5025221000 | Student 1 Name |
-| 5025241184 | Naufaldi Faqih Abimanyu |
+| 5025221000 | Student 2 Name |
 | 5025221000 | Student 3 Name |
 
 # Praktikum Modul 3 _(Module 3 Lab Work)_
@@ -21,17 +21,13 @@ _One sunny morning, Budiman, an Informatics student, was assigned by his lecture
 
 **Answer:**
 
-- **Code:**
-
-  `put your answer here`
-
 - **Explanation:**
 
-  `put your answer here`
+  ```mengiluti langkah" dimodul, menginstall kernel linux```
 
 - **Screenshot:**
 
-  `put your answer here`
+  ```[put your answer here](https://drive.google.com/drive/folders/1-tte7wl_QmDY-ED-fQ-6jFH5IrBzSlpt?usp=sharing)```
 
 ### Soal 2
 
@@ -43,15 +39,19 @@ _One sunny morning, Budiman, an Informatics student, was assigned by his lecture
 
 - **Code:**
 
-  `put your answer here`
+  ```mkdir -p myramdisk/{bin,dev,proc,sys,etc,root,sisop,home/root,Budiman,guest,praktikan1,praktikan2}```
 
 - **Explanation:**
 
-  `put your answer here`
+  ```
+  - membuat multi user
+```
 
 - **Screenshot:**
 
-  `put your answer here`
+  ```
+https://drive.google.com/drive/folders/1RWGkA1FpUk0X68oX7No0n52i2Ro4eitp?usp=sharing
+```
 
 ### Soal 3
 
@@ -72,16 +72,58 @@ praktikan2:praktikan2
 **Answer:**
 
 - **Code:**
+```
+- sudo bash
+- mkdir -p myramdisk/{bin,dev,proc,sys,etc,root,sisop,home/root,Budiman,guest,praktikan1,praktikan2}
+- cp -a /dev/null myramdisk/dev
+cp -a /dev/tty* myramdisk/dev
+cp -a /dev/zero myramdisk/dev
+cp -a /dev/console myramdisk/dev
+- cp /usr/bin/busybox myramdisk/bin
+cd myramdisk/bin
+./busybox --install .
+- openssl passwd -1 Iniroot         # → Save as <root_hash>
+openssl passwd -1 PassBudi        # → Save as <budi_hash>
+openssl passwd -1 guest           # → Save as <guest_hash>
+openssl passwd -1 praktikan1      # → Save as <p1_hash>
+openssl passwd -1 praktikan2      # → Save as <p2_hash>
+- root:<hash>:0:0:root:/root:/bin/sh
+Budiman:<hash>:1001:100:Budiman:/home/Budiman:/bin/sh
+guest:<hash>:1002:100:Guest:/home/guest:/bin/sh
+praktikan1:<hash>:1003:100:Praktikan 1:/home/praktikan1:/bin/sh
+praktikan2:<hash>:1004:100:Praktikan 2:/home/praktikan2:/bin/sh
+- root:x:0:
+users:x:100:Budiman,guest,praktikan1,praktikan2
+bin:x:1:root
+sys:x:2:root
+tty:x:5:root,Budiman,guest,praktikan1,praktikan2
+disk:x:6:root
+wheel:x:10:root,Budiman
+- touch init
+#!/bin/sh
+/bin/mount -t proc none /proc
+/bin/mount -t sysfs none /sys
 
-  `put your answer here`
+while true
+do
+    /bin/getty -L tty1 115200 vt100
+    sleep 1
+done
+- chmod +x init
+- find . | cpio -oHnewc | gzip > ../myramdisk.gz
+
+```
 
 - **Explanation:**
 
-  `put your answer here`
+  ```
+- 
 
 - **Screenshot:**
 
-  `put your answer here`
+  ```
+  https://drive.google.com/drive/folders/1syYAuU6QF52tybaAc6MheF3EHzU_8ju8?usp=sharing
+  ```
 
 ### Soal 4
 
@@ -93,18 +135,15 @@ praktikan2:praktikan2
 
 - **Code:**
 
-  `chown 0:0 OS/home/root
-
-chmod 700 OS/home/root
-`
+  `put your answer here`
 
 - **Explanation:**
-Untuk soal nomor 4 ini kita di minta untuk membuat user root menjadi super user maka dari itu kami membuat kode seperti di atas berikut penjelasannya:
-Dengan chmod 700, semua akan ditolak kecuali oleh user root.
-Ini memastikan bahwa hanya user dengan UID 0 (root) yang bisa masuk ke folder tersebut. User lain akan ditolak.
+
+  `put your answer here`
 
 - **Screenshot:**
-- ![image alt](https://github.com/xaldinzz/sisop3/blob/main/Screenshot%20from%202025-05-23%2019-52-48.png?raw=true)
+
+  `put your answer here`
 
 ### Soal 5
 
@@ -116,22 +155,16 @@ Ini memastikan bahwa hanya user dengan UID 0 (root) yang bisa masuk ke folder te
 
 - **Code:**
 
-chown 1001:100 OS/home/Budiman
-chmod 700 OS/home/Budiman
-
+  `put your answer here`
 
 - **Explanation:**
-- Untuk nomor 5,, kami harus membuat user-user yang di miliki di sistem operasi kami hanya bisa memakses file file yang berada di direktorinya masih masing. Ini penjelasan dari kode berikut:
-  1001 → UID milik user Budiman
 
-100 → GID default user group  
-berbeda dengan root tdi yang mengharuskan kita untuk membuat root super user di nomor 5 ini budiman hanya di minta untuk membuat user-user(selain root) hanya bisa mengakses filenya sendiri.
+  `put your answer here`
 
 - **Screenshot:**
 
-![image alt](https://github.com/xaldinzz/sisop3/blob/main/Screenshot%20from%202025-05-23%2020-21-25.png?raw=true)
+  `put your answer here`
 
-```Penjelasan: Difoto ini aku memberi contoh bahwa aku sedang di dalam sistem operasi Budiman Disaat aku memperintah Ls dia menunjukan file di dalamnya tetapi ketika aku melakukan hal yang sama di User guest dia memberi pesan Access Denied.```
 ### Soal 6
 
 > Dosen Budiman menginginkan sistem operasi yang **stylish**. Budiman memiliki ide untuk membuat sistem operasinya menjadi stylish. Ia meminta kamu untuk menambahkan tampilan sebuah banner yang ditampilkan setelah suatu user login ke dalam sistem operasi Budiman. Banner yang diinginkan Budiman adalah tulisan `"Welcome to OS'25"` dalam bentuk **ASCII Art**. Buatkanlah banner tersebut supaya Budiman senang! (Hint: gunakan text to ASCII Art Generator)
@@ -141,24 +174,16 @@ berbeda dengan root tdi yang mengharuskan kita untuk membuat root super user di 
 **Answer:**
 
 - **Code:**
-  ```                         /$$                                                     /$$                                                /$$$$$$  /$$$$$$$ 
-                        | $$                                                    | $$                                               /$$__  $$| $$____/ 
- /$$  /$$  /$$  /$$$$$$ | $$  /$$$$$$$  /$$$$$$  /$$$$$$/$$$$   /$$$$$$        /$$$$$$    /$$$$$$         /$$$$$$   /$$$$$$$      |__/  \ $$| $$      
-| $$ | $$ | $$ /$$__  $$| $$ /$$_____/ /$$__  $$| $$_  $$_  $$ /$$__  $$      |_  $$_/   /$$__  $$       /$$__  $$ /$$_____/        /$$$$$$/| $$$$$$$ 
-| $$ | $$ | $$| $$$$$$$$| $$| $$      | $$  \ $$| $$ \ $$ \ $$| $$$$$$$$        | $$    | $$  \ $$      | $$  \ $$|  $$$$$$        /$$____/ |_____  $$
-| $$ | $$ | $$| $$_____/| $$| $$      | $$  | $$| $$ | $$ | $$| $$_____/        | $$ /$$| $$  | $$      | $$  | $$ \____  $$      | $$       /$$  \ $$
-|  $$$$$/$$$$/|  $$$$$$$| $$|  $$$$$$$|  $$$$$$/| $$ | $$ | $$|  $$$$$$$        |  $$$$/|  $$$$$$/      |  $$$$$$/ /$$$$$$$/      | $$$$$$$$|  $$$$$$/
- \_____/\___/  \_______/|__/ \_______/ \______/ |__/ |__/ |__/ \_______/         \___/   \______/        \______/ |_______/       |________/ \______/ 
-EOF
 
+  `put your answer here`
 
 - **Explanation:**
 
-Disoal No 6 ini Budiman disuruh untuk membuat banner agar memperindah sistem operasi Budiman
+  `put your answer here`
 
 - **Screenshot:**
 
-![image alt](https://github.com/xaldinzz/sisop3/blob/main/Screenshot%20from%202025-05-23%2020-55-44.png?raw=true)
+  `put your answer here`
 
 ### Soal 7
 
@@ -170,18 +195,15 @@ Disoal No 6 ini Budiman disuruh untuk membuat banner agar memperindah sistem ope
 
 - **Code:**
 
-  `cat /etc/banner
-echo "Helloo $USER"
-export PS1="\[\e[1;32m\]\u@\h:\w\$ \[\e[0m\]"
-`
+  `put your answer here`
 
 - **Explanation:**
 
-  `Untuk soal nomor 7 Sitem Operasi Budiman diharuskan untuk menyambut user yang sedang login, Disitu terdapat banner dan juga ucapan Hello user yang sedang login. untuk PS1 adalah prompt seperti terminal asli Linux.`
+  `put your answer here`
 
 - **Screenshot:**
 
-![image alt](https://github.com/xaldinzz/sisop3/blob/main/Screenshot%20from%202025-05-23%2021-04-36.png?raw=true)
+  `put your answer here`
 
 ### Soal 8
 
@@ -193,26 +215,15 @@ export PS1="\[\e[1;32m\]\u@\h:\w\$ \[\e[0m\]"
 
 - **Code:**
 
-  ```
-  echo "[INFO] getty running on ttyS0" > /dev/console
-  /bin/getty -L ttyS0 115200 vt100
-  sleep 1
-done```
+  `put your answer here`
 
 - **Explanation:**
-Untuk no. 8 Dikarenakan Dosen budiman memiliki kesulitan untuk melihat Budiman di Harus membuat Sistem Operasi Budiman harus menampilkan tampilan terminal ketika menjalankan Sistem Operasi.
-`palankan getty di ttyS0, yaitu serial console QEMU (-nographic mode).
-getty adalah program yang:
-Membuka terminal (tty)
-Menampilkan prompt login:
-Setelah user isi username, getty akan menjalankan login
--L → jangan coba deteksi modem
-ttyS0 → serial terminal aktif di QEMU
-`
+
+  `put your answer here`
 
 - **Screenshot:**
 
-![image alt](https://github.com/xaldinzz/sisop3/blob/main/Screenshot%20from%202025-05-23%2021-04-54.png?raw=true)
+  `put your answer here`
 
 ### Soal 9
 
