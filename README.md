@@ -3,7 +3,7 @@
 | :--------: | :------------: |
 | 5025241181 | Muhammad Naufal Hadaya Setiawan |
 | 5025241184 | Naufaldi Faqih Abimanyu |
-| 5025221000 | Student 3 Name |
+| 5025241221 | Muh. Raihan Huda Negara |
 
 # Praktikum Modul 3 _(Module 3 Lab Work)_
 
@@ -84,7 +84,7 @@ _One sunny morning, Budiman, an Informatics student, was assigned by his lecture
 
 - **Screenshot:**
 
-  `put your answer here`
+  [2](https://drive.google.com/file/d/17gvdnJzcbaBC53Xkadii9TTKvIrFX5HL/view?usp=sharing)
 
 ### Soal 3
 
@@ -138,7 +138,7 @@ praktikan2:praktikan2
 
 - **Screenshot:**
 
-  `put your answer here`
+  [3](https://drive.google.com/file/d/1YfErZjAcAJ1xUQHN7thBQ9kW_rYgs0Oa/view?usp=sharing)
 
 ### Soal 4
 
